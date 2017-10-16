@@ -10,15 +10,15 @@ export class ImageService {
   					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png', 
   					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png'),
 				new Image ('1',
-  					 'Materialize', 
-  					 'CSS Framework', 
-  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png', 
-  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png'),
+  					 'Javascript', 
+  					 'Programming language', 
+  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/javascript.png', 
+  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/javascript.png'),
 				new Image ('1',
-  					 'Materialize', 
-  					 'CSS Framework', 
-  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png', 
-  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/Materialize.png'),
+  					 'HTML 5', 
+  					 'HyperText Markup Language', 
+  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/html.png', 
+  					 'https://jenniferjara.github.io/miportafolio/assets/img/iconos/html.png'),
 				];
   constructor() { }
   	getImages() {
