@@ -1,7 +1,9 @@
+//src/app/app.module.ts
 import {routes} from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ImageService} from './services/image.service';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
@@ -25,7 +27,8 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
   	routes,
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [ImageService],
   bootstrap: [AppComponent]
