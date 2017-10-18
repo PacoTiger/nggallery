@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ImageService} from './services/image.service';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
@@ -16,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminImagesListComponent } from './admin/admin-images-list/admin-images-list.component';
 import { DashboardComponent } from './admin/dashboard.component';
+import { AdminImageCreateComponent } from './admin-image-create/admin-image-create.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,13 @@ import { DashboardComponent } from './admin/dashboard.component';
     ContactComponent,
     AdminComponent,
     AdminImagesListComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminImageCreateComponent
   ],
   imports: [
   	routes,
     BrowserModule,
+    FormsModule,
     HttpModule
   ],
   providers: [ImageService],
