@@ -6,31 +6,39 @@
 
 <div class="col-md-10 col-md-offset-1">
   <div class="well well bs-component">
-    <form class="form-horizontal">
+  	<!-- #createImageForm esto crea una variable o etiqueta personalizada, nos permite decir con ="ngForm" que este es el formulario que queremos manejar
+	
+	createImage() es un metodo que debemos crear
+
+	y con .value recuperarmos los datos del formulario
+
+	nota: debemos etiquetar cada campo que queremos recuperar con ng-model
+  	 -->
+    <form class="form-horizontal" (ngSubmit)="createImage(createImageForm.value)" #createImageForm="ngForm">
       <fieldset>
         <legend>Añadir Nueve Imagen</legend>
         <div class="form-group">
           <label for="thumbnail" class="col-lg-2 control-label">Miniatura</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Miniatura de la imagen">
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Miniatura de la imagen" ngModel>
           </div>
         </div>
         <div class="form-group">
             <label for="imagelink" class="col-lg-2 control-label">Enlace Imagen</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" id="imageLink" name="imageLink" placeholder="Enlace a la imagen">
+              <input type="text" class="form-control" id="imageLink" name="imageLink" placeholder="Enlace a la imagen" ngModel>
             </div>
         </div>
         <div class="form-group">
           <label for="title" class="col-lg-2 control-label">Título</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="title" name="title" placeholder="Título">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Título" ngModel>
           </div>
         </div>
         <div class="form-group">
           <label for="description" class="col-lg-2 control-label">Descripción</label>
           <div class="col-lg-10">
-            <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripción de la Imagen"></textarea>
+            <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripción de la Imagen" ngModel></textarea>
           </div>
         </div>
 
