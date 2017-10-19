@@ -14,38 +14,62 @@
 
 	nota: debemos etiquetar cada campo que queremos recuperar con ngModel
   	 -->
-    <form class="form-horizontal" (ngSubmit)="createImage(createImageForm.value)" #createImageForm="ngForm">
-      <fieldset>
+    <form novalidate class="form-horizontal" (ngSubmit)="createImage(createImageForm.value)" #createImageForm="ngForm">
+      <fieldset> 
         <legend>Añadir Nueve Imagen</legend>
         <div class="form-group">
           <label for="thumbnail" class="col-lg-2 control-label">Miniatura</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Miniatura de la imagen" ngModel>
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Miniatura de la imagen" ngModel #thumbnail="ngModel" required minlength="3">
+            	<!--
+            		 Validacion template-driven por angular en frontend, se lee asi
+				    Si el input tiene el error de required y ha sido tocado, enseña el texto 		del div. Facil 
+
+					nota: añadimos novalidate en form para quitar por defecto la validacion que trae angular. 
+
+					nota2: con pattern podemos establecer ER mirar en la API de Angular
+            	 -->
+            	<div *ngIf="thumbnail.errors?.required && thumbnail.touched" class=" red lighten-3">
+            	La minitatura es obligatoria
+        		</div>
+        		<div *ngIf="thumbnail.errors?.minlength && thumbnail.touched" class="red lighten-3">
+              	Debe tener un mínimo de tres caracteres
+            	</div>
           </div>
         </div>
         <div class="form-group">
             <label for="imagelink" class="col-lg-2 control-label">Enlace Imagen</label>
             <div class="col-lg-10">
-              <input type="text" class="form-control" id="imageLink" name="imageLink" placeholder="Enlace a la imagen" ngModel>
+              <input type="text" class="form-control" id="imageLink" name="imageLink" placeholder="Enlace a la imagen" ngModel #imageLink="ngModel" required>
+              	<div *ngIf="imageLink.errors?.required && imageLink.touched" class="red lighten-3">
+                El enlace a la imagen es obligatorio
+              </div>
             </div>
+
         </div>
         <div class="form-group">
           <label for="title" class="col-lg-2 control-label">Título</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="title" name="title" placeholder="Título" ngModel>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Título" ngModel #title="ngModel" required>
+            	<div *ngIf="title.errors?.required && title.touched" class="red lighten-3">
+              	El título es obligatorio
+            	</div>
           </div>
         </div>
         <div class="form-group">
           <label for="description" class="col-lg-2 control-label">Descripción</label>
           <div class="col-lg-10">
-            <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripción de la Imagen" ngModel></textarea>
+            <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripción de la Imagen" ngModel #description="ngModel" required></textarea>
+            	<div *ngIf="description.errors?.required && description.touched" class="red lighten-3">
+              	La descripción es obligatoria
+            	</div>
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-lg-10 col-lg-offset-2">
             <button class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary" [disabled]="createImageForm.invalid">Crear</button>
           </div>
         </div>
       </fieldset>
