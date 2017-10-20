@@ -37,4 +37,9 @@ export class ImageService {
         .catch((error:any) => Observable.throw(error.json().error || {message:"Error del Servidor"}));
     }
 
+    getImage(id: String): Observable<Image[]> {
+      return this.http.get('http://cursoangular.app/api/v1/images/' + id)
+        .map((response: Response) => response.json());
+    }
+
 }
