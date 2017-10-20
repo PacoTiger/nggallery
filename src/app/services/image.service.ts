@@ -42,4 +42,12 @@ export class ImageService {
         .map((response: Response) => response.json());
     }
 
+    updateImage(image: Object): Observable<Image[]> {
+      const apiUrl = 'http://cursoangular.app/api/v1/images';
+      const url = `${apiUrl}/${image["id"]}`;
+      return this.http.put(url, image)
+        .map((response: Response) => response.json())
+        .catch((error:any) => Observable.throw(error.json().error || {message:"Error del Servidor"}));
+     }
+
 }

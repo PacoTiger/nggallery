@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
+import { Image } from '../../models/image';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class AdminImageEditComponent implements OnInit, OnDestroy {
 	id: any;
 	params: any;
 
+  image = new Image('id', 'tittle', 'description', 'thumbnail', 'imagelink');
   constructor( private activatedRoute: ActivatedRoute, private imageService: ImageService ) {}
 
   ngOnInit() {
@@ -19,6 +21,11 @@ export class AdminImageEditComponent implements OnInit, OnDestroy {
   	this.imageService.getImage(this.id).subscribe(
   		data => {
   			console.log(data);
+  			this.image.description = data['description'];
+  			this.image.title = data['title'];
+  			this.image.imagelink = data['imagelink'];
+  			this.image.thumbnail = data['thumbnail'];
+  			this.image.id = data['id'];
   		},
   		error => console.log(<any>error));
   }
@@ -27,4 +34,12 @@ export class AdminImageEditComponent implements OnInit, OnDestroy {
   	this.params.unsubscribe();
   }
 
+   updateImage(image) {
+	  this.imageService.updateImage(image)
+	    .subscribe(
+	      image  => {
+	        console.log(image);
+	      },
+	      error =>  console.log(<any>error));
+  }
 }
